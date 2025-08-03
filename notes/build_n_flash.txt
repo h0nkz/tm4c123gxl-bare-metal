@@ -1,0 +1,20 @@
+arm-none-eabi-gcc -c -mcpu=cortex-m4 -mthumb -std=gnu11 main.c -o ma
+in.o
+
+arm-none-eabi-gcc -c -mcpu=cortex-m4 -mthumb -std=gnu11 tm4c123gxl_startup.c -o tm4c123gxl_startup.o
+
+arm-none-eabi-gcc -nostdlib -T tm4c123gxl_ls.ld *.o -o blinky_with_linker.elf
+
+openocd -f board/ti_ek-tm4c123gxl.cfg
+
+arm-none-eabi-gdb
+
+target extended-remote :3333
+
+monitor reset init
+
+monitor flash write_image erase blinky_with_linker.elf
+
+monitor reset init
+
+monitor resume

@@ -13,8 +13,8 @@ void main(void)
 	while (1) 
 	{
 		PORTF_GPIODATA |= (1 << 3); // turn on light
-		for(i = 0; i < 500000; i++) {}
+		for(i = 0; i < 250000; i++) {}
 		PORTF_GPIODATA &= ~(1 << 3); // turn off light
-		for(i = 0; i < 500000; i++) {}
+		for(i = 0; i < 250000; i++) {}
 	}
 }

@@ -1,0 +1,7 @@
+Lessons learned, key take-aways, issues and their solutions:
+
+- Issue: arm-none-eabi-gdb not found though GNU arm Embedded Toolchain already installed
+    - Cause: Newer versions of toolchain does not include GDB
+    - Solution: Install gdb-multiarch and add following symlink:
+    ln -s /usr/bin/gdb-multiarch /usr/bin/arm-none-eabi-gdb
+    to be able to execute arm-none-eabi-gdb
