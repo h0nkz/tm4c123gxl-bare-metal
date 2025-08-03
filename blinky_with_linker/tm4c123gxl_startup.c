@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 extern uint32_t _estack;
 extern uint32_t _etext;
 extern uint32_t _sdata;
@@ -11,22 +13,30 @@ void NMI_Handler(void)__attribute__((weak, alias("Default_Handler")));
 void HardFault_Handler(void)__attribute__((weak, alias("Default_Handler")));
 void MemManage_Handler(void)__attribute__((weak, alias("Default_Handler")));
 
+void Default_Handler(void)
+{
+    while(1)
+    {
+        
+    }
+}
+
 uint32_t vector_tbl[] __attribute((section(".isr_vector_tbl"))) = 
 {
     (uint32_t) &_estack, // The initial stack pointer
     (uint32_t) &Reset_Handler, // The reset handler
-    (uint32_t) &(uint32_t) &NMI_Handler, // The NMI handler
-    (uint32_t) &(uint32_t) &HardFault_Handler, // The hard fault handler
+    (uint32_t) &NMI_Handler, // The NMI handler
+    (uint32_t) &HardFault_Handler, // The hard fault handler
     (uint32_t) &Default_Handler,                      // The MPU fault handler
     (uint32_t) &Default_Handler,                      // The bus fault handler
     (uint32_t) &Default_Handler,                      // The usage fault handler
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
     (uint32_t) &Default_Handler,                      // SVCall handler
     (uint32_t) &Default_Handler,                      // Debug monitor handler
-    (uint32_t) &0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
     (uint32_t) &Default_Handler,                      // The PendSV handler
     (uint32_t) &Default_Handler,                      // The SysTick handler
     (uint32_t) &Default_Handler,                      // GPIO Port A
@@ -70,8 +80,8 @@ uint32_t vector_tbl[] __attribute((section(".isr_vector_tbl"))) =
     (uint32_t) &Default_Handler,                      // Quadrature Encoder 1
     (uint32_t) &Default_Handler,                      // CAN0
     (uint32_t) &Default_Handler,                      // CAN1
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
     (uint32_t) &Default_Handler,                      // Hibernate
     (uint32_t) &Default_Handler,                      // USB0
     (uint32_t) &Default_Handler,                      // PWM Generator 3
@@ -81,8 +91,8 @@ uint32_t vector_tbl[] __attribute((section(".isr_vector_tbl"))) =
     (uint32_t) &Default_Handler,                      // ADC1 Sequence 1
     (uint32_t) &Default_Handler,                      // ADC1 Sequence 2
     (uint32_t) &Default_Handler,                      // ADC1 Sequence 3
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
     (uint32_t) &Default_Handler,                      // GPIO Port J
     (uint32_t) &Default_Handler,                      // GPIO Port K
     (uint32_t) &Default_Handler,                      // GPIO Port L
@@ -93,34 +103,34 @@ uint32_t vector_tbl[] __attribute((section(".isr_vector_tbl"))) =
     (uint32_t) &Default_Handler,                      // UART5 Rx and Tx
     (uint32_t) &Default_Handler,                      // UART6 Rx and Tx
     (uint32_t) &Default_Handler,                      // UART7 Rx and Tx
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
     (uint32_t) &Default_Handler,                      // I2C2 Master and Slave
     (uint32_t) &Default_Handler,                      // I2C3 Master and Slave
     (uint32_t) &Default_Handler,                      // Timer 4 subtimer A
     (uint32_t) &Default_Handler,                      // Timer 4 subtimer B
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
     (uint32_t) &Default_Handler,                      // Timer 5 subtimer A
     (uint32_t) &Default_Handler,                      // Timer 5 subtimer B
     (uint32_t) &Default_Handler,                      // Wide Timer 0 subtimer A
@@ -136,15 +146,15 @@ uint32_t vector_tbl[] __attribute((section(".isr_vector_tbl"))) =
     (uint32_t) &Default_Handler,                      // Wide Timer 5 subtimer A
     (uint32_t) &Default_Handler,                      // Wide Timer 5 subtimer B
     (uint32_t) &Default_Handler,                      // FPU
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
     (uint32_t) &Default_Handler,                      // I2C4 Master and Slave
     (uint32_t) &Default_Handler,                      // I2C5 Master and Slave
     (uint32_t) &Default_Handler,                      // GPIO Port M
     (uint32_t) &Default_Handler,                      // GPIO Port N
     (uint32_t) &Default_Handler,                      // Quadrature Encoder 2
-    (uint32_t) &0,                                      // Reserved
-    (uint32_t) &0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
+    (uint32_t) 0,                                      // Reserved
     (uint32_t) &Default_Handler,                      // GPIO Port P (Summary or P0)
     (uint32_t) &Default_Handler,                      // GPIO Port P1
     (uint32_t) &Default_Handler,                      // GPIO Port P2
@@ -170,13 +180,7 @@ uint32_t vector_tbl[] __attribute((section(".isr_vector_tbl"))) =
     (uint32_t) &Default_Handler                       // PWM 1 Fault
 };
 
-void Default_Handler(void)
-{
-    while(1)
-    {
-        
-    }
-}
+
 
 void Reset_Handler(void)
 {

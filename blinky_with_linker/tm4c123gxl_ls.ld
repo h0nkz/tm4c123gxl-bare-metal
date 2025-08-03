@@ -31,7 +31,7 @@ SECTIONS
         . = ALIGN(4);
         _edata = .;
     } > SRAM AT> FLASH 
-    .bss
+    .bss :
     {
         . = ALIGN(4);
         _sbss = .;
